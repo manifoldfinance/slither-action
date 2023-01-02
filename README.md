@@ -1,4 +1,6 @@
-# Slither Action
+# [`foundry-slither-echidna`](#)
+
+> Fork to support Foundry
 
 This action allows you to run the [Slither static
 analyzer](https://github.com/crytic/slither) against your project, from within a
@@ -24,7 +26,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-      - uses: crytic/slither-action@v0.2.0
+      - uses: foundry-slither-echidna@main
 ```
 
 ### Options
