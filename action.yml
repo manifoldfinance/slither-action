@@ -1,4 +1,4 @@
-name: 'foundry-ci'
+name: 'foundry-slither-echidna'
 description: 'Runs Foundry + Slither and Echidna'
 inputs:
   solc-version:
@@ -45,4 +45,4 @@ runs:
     - ${{ inputs.slither-version }}
 branding:
   icon: 'shield'  
-  color: 'red'
+  color: 'blue'
