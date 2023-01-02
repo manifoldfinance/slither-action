@@ -24,6 +24,10 @@ IGNORECOMPILE="$(get INPUT_IGNORE-COMPILE)"
 # it with the `solc-version` action option.
 unset SOLC_VERSION
 
+git config user.name "${GITHUB_ACTOR}"
+git config user.email "${GITHUB_ACTOR}@users.noreply.github.com"
+git config --global --add safe.directory /github/workspace
+
 compatibility_link()
 {
     HOST_GITHUB_WORKSPACE="$(get INPUT_INTERNAL-GITHUB-WORKSPACE | tr -d \")"
@@ -174,6 +178,8 @@ install_slither()
     export PATH="/opt/slither/bin:$PATH"
     pip3 install wheel
     pip3 install "$SLITHERPKG"
+    pip3 uninstall crytic-compile && pip3 install -U https://github.com/crytic/crytic-compile/archive/refs/heads/dev-fix-foundry-options.zip
+
 }
 
 install_deps()
@@ -187,8 +193,8 @@ install_deps()
             npm ci
         elif [[ -f yarn.lock ]]; then
             echo "[-] Installing dependencies from yarn.lock"
-            npm install -g yarn
-            yarn install --frozen-lockfile
+            npm install -g yarn@^1
+            yarn --prefer-offline
         elif [[ -f pnpm-lock.yaml ]]; then
             echo "[-] Installing dependencies from pnpm-lock.yaml"
             npm install -g pnpm
