@@ -1,5 +1,5 @@
-name: 'slither-action'
-description: 'Runs Slither, the Solidity static analyzer.'
+name: 'foundry-ci'
+description: 'Runs Foundry + Slither and Echidna'
 inputs:
   solc-version:
     description: 'The version of solc to use. Should be autodetected, but may be specified manually.'
